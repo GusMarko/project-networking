@@ -22,17 +22,17 @@ def replace_placeholders(curr_env):
 
     with open (tfvars_path, "r") as f:
         tfvars = f.read()
-    tfvars = tfvars.replace("access_key_placeholder", access_key)
-    tfvars = tfvars.replace("secret_key_placeholder", secret_key)
-    tfvars = tfvars.replace("env_placeholder", env)
+    tfvars = tfvars.replace("access_key_placeholder", str(access_key))
+    tfvars = tfvars.replace("secret_key_placeholder", str(secret_key))
+    tfvars = tfvars.replace("env_placeholder", str(env))
     with open(tfvars_path, "w") as f:
         f.write(tfvars)
 
     with open(backend_path, "r") as f:
         backend_config = f.read()
-    backend_config = backend_config.replace("access_key_placeholder", access_key)
-    backend_config = backend_config.replace("secret_key_placeholder", secret_key)
-    backend_config = backend_config.replace("aws_region_placeholder", aws_region)
+    backend_config = backend_config.replace("access_key_placeholder", str(access_key))
+    backend_config = backend_config.replace("secret_key_placeholder", str(secret_key))
+    backend_config = backend_config.replace("aws_region_placeholder", str(aws_region))
     with open(backend_config_path, "w") as f:
         f.write(backend_config)
 
