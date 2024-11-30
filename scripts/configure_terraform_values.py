@@ -25,6 +25,7 @@ def replace_placeholders(curr_env):
     tfvars = tfvars.replace("access_key_placeholder", str(access_key))
     tfvars = tfvars.replace("secret_key_placeholder", str(secret_key))
     tfvars = tfvars.replace("env_placeholder", str(env))
+    tfvars = tfvars.replace("aws_region_placeholder", str(aws_region))
     with open(tfvars_path, "w") as f:
         f.write(tfvars)
 
