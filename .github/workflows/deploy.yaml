@@ -27,7 +27,7 @@ jobs:
       - name: Run python helper script
         run: |
           cd scripts
-          python3 configure_terraform_placeholders.py
+          python3 configure_terraform_values.py
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
