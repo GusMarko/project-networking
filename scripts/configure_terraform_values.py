@@ -1,0 +1,50 @@
+import os
+import shutil
+
+
+AWS_REGION = os.environ.get("AWS_REGION")
+ACCESS_KEY = os.environ.get("ACCESS_KEY_ID")
+SECRET_KEY = os.environ.get("SECRET_ACCESS_KEY")
+
+
+def main ():
+    curr_env = get_environment()
+    replace_placeholders(curr_env)
+
+# define variables, access backend block of provider.tf file and tfvars file and read/replace values and then write back to files
+def replace_placeholders(curr_env):
+    aws_region = AWS_REGION
+    access_key = ACCESS_KEY
+    secret_key = SECRET_KEY
+    env = curr_env
+    tfvars_path = "../iac/terraform.tfvars"
+    backend_path = "../iac/provider.tf"
+
+    with open (tfvars_path, "r") as f:
+        tfvars = f.read()
+    tfvars = tfvars.replace("access_key_placeholder", access_key)
+    tfvars = tfvars.replace("secret_key_placeholder", secret_key)
+    tfvars = tfvars.replace("env_placeholder", env)
+    with open(tfvars_path, "w") as f:
+        f.write(tfvars)
+
+    with open(backend_path, "r") as f:
+        backend_config = f.read()
+    backend_config = backend_config.replace("access_key_placeholder", access_key)
+    backend_config = backend_config.replace("secret_key_placeholder", secret_key)
+    backend_config = backend_config.replace("aws_region_placeholder", aws_region)
+    with open(backend_config_path, "w") as f:
+        f.write(backend_config)
+
+# get_environment function retrieves value of current branch from github's envrionment variable
+def get_environment():
+    env_name = os.environ.get("GITHUB_BASE_REF", "")
+    env_name_parts = env_name.split("/")
+    env_name = env_name_parts[-1]
+
+    return env_name
+
+
+########## START ##########
+if __name__ == "__main__":
+    main()
