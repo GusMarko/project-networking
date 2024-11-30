@@ -1,5 +1,5 @@
 vpc_cidr_block = "192.168.0.0/24"
-pub_sub_cidr_block = "192.168.0.0./25"
+pub_sub_cidr_block = "192.168.0.0/25"
 priv_sub_cidr_block = "192.168.0.128/25"
 env = "env_placeholder"
 aws_region = "aws_region_placeholder"
