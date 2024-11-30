@@ -3,8 +3,8 @@ import shutil
 
 
 AWS_REGION = os.environ.get("AWS_REGION")
-ACCESS_KEY = os.environ.get("ACCESS_KEY_ID")
-SECRET_KEY = os.environ.get("SECRET_ACCESS_KEY")
+ACCESS_KEY = os.environ.get("AWS_ACCESS_KEY_ID")
+SECRET_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
 
 def main ():
