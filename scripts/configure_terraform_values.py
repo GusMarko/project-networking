@@ -33,7 +33,7 @@ def replace_placeholders(curr_env):
     backend_config = backend_config.replace("access_key_placeholder", str(access_key))
     backend_config = backend_config.replace("secret_key_placeholder", str(secret_key))
     backend_config = backend_config.replace("aws_region_placeholder", str(aws_region))
-    with open(backend_config_path, "w") as f:
+    with open(backend_path, "w") as f:
         f.write(backend_config)
 
 # get_environment function retrieves value of current branch from github's envrionment variable
