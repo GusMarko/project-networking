@@ -24,5 +24,5 @@ resource "aws_nat_gateway" "nat" {
 
 # Elastic ip for NAT 
 resource "aws_eip" "eip" {
-  vpc = true
+  domain = "vpc"
 }
